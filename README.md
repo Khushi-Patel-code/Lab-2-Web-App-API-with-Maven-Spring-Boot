@@ -1,8 +1,10 @@
 # Binary Calculator Web Application & API
 **Course:** SOFE 3980U - Software Quality Assurance  
 **Lab:** Lab 2 - Implementing and Testing Web Applications with Spring Boot  
-**Name:** Khushi Patel
-**Student ID:** 100940709
+**Name:** Khushi Patel  
+**Student ID:** 100940709  
+[**Demo Video Link**](https://drive.google.com/file/d/1hTs0iJHMH_5aqkRHmOHMRJCZTuPE4oyD/view?usp=sharing)
+
 ## 🚀 Overview
 This project is a Spring Boot web application that provides binary arithmetic services. It has a user-friendly web lnterface and RESTful API service. The calculator supports binary addition, multiplication, bitwise AND, and bitwise OR operations.
 
