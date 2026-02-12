@@ -35,7 +35,7 @@ public class BinaryAPIControllerTest {
    
     @Test
     public void add() throws Exception {
-        this.mvc.perform(get("/add").param("operand1","111").param("operand2","1010"))//.andDo(print())
+        this.mvc.perform(get("/add").param("operand1","111").param("operand2","1010"))
             .andExpect(status().isOk())
             .andExpect(content().string("10001"));
     }
@@ -43,9 +43,9 @@ public class BinaryAPIControllerTest {
     public void add2() throws Exception {
         this.mvc.perform(get("/add_json").param("operand1","111").param("operand2","1010"))
             .andExpect(status().isOk())
-            .andExpect(MockMvcResultMatchers.jsonPath("$.operand1").value(111))
-			.andExpect(MockMvcResultMatchers.jsonPath("$.operand2").value(1010))
-			.andExpect(MockMvcResultMatchers.jsonPath("$.result").value(10001))
+            .andExpect(MockMvcResultMatchers.jsonPath("$.operand1").value("111"))
+			.andExpect(MockMvcResultMatchers.jsonPath("$.operand2").value("1010"))
+			.andExpect(MockMvcResultMatchers.jsonPath("$.result").value("10001"))
 			.andExpect(MockMvcResultMatchers.jsonPath("$.operator").value("+"));
     }
     @Test
@@ -67,5 +67,20 @@ public class BinaryAPIControllerTest {
         this.mvc.perform(get("/add").param("operand1","1010").param("operator","|").param("operand2","1101"))
             .andExpect(status().isOk())
             .andExpect(content().string("1111"));
+    }
+    @Test
+    public void apiMultiplyJsonTest() throws Exception {
+        this.mvc.perform(get("/add_json").param("operand1","10").param("operator","*").param("operand2","11"))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.result").value("110"))
+            .andExpect(jsonPath("$.operator").value("*"));
+    }
+
+    @Test
+    public void apiAndJsonTest() throws Exception {
+        this.mvc.perform(get("/add_json").param("operand1","101").param("operator","&").param("operand2","111"))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.result").value("101"))
+            .andExpect(jsonPath("$.operator").value("&"));
     }
 }
