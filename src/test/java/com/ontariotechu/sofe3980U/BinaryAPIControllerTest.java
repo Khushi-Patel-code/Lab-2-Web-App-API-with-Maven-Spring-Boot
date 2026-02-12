@@ -41,7 +41,7 @@ public class BinaryAPIControllerTest {
     }
 	@Test
     public void add2() throws Exception {
-        this.mvc.perform(get("/add_json").param("operand1","111").param("operand2","1010"))//.andDo(print())
+        this.mvc.perform(get("/add_json").param("operand1","111").param("operand2","1010"))
             .andExpect(status().isOk())
             .andExpect(MockMvcResultMatchers.jsonPath("$.operand1").value(111))
 			.andExpect(MockMvcResultMatchers.jsonPath("$.operand2").value(1010))
