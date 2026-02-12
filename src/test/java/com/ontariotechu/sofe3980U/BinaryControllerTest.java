@@ -79,5 +79,22 @@ public class BinaryControllerTest {
             .andExpect(view().name("result"))
             .andExpect(model().attribute("result", "110"));
     }
-
+    @Test
+    public void testOR_SecondCase() throws Exception {
+        this.mvc.perform(post("/").param("operand1","111").param("operator","|").param("operand2","000"))
+            .andExpect(status().isOk())
+            .andExpect(model().attribute("result", "111"));
+    }
+    @Test
+    public void testAND_SecondCase() throws Exception {
+        this.mvc.perform(post("/").param("operand1","111").param("operator","&").param("operand2","000"))
+            .andExpect(status().isOk())
+            .andExpect(model().attribute("result", "0"));
+    }
+    @Test
+    public void testMultiply_SecondCase() throws Exception {
+        this.mvc.perform(post("/").param("operand1","101").param("operator","*").param("operand2","0"))
+            .andExpect(status().isOk())
+            .andExpect(model().attribute("result", "0"));
+    }
 }
